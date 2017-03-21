@@ -17,7 +17,7 @@ public class Project extends Production{
     private int statusPos = 0;
 
     String type; //Tipo de projeto
-    ArrayList <Person> members = new ArrayList<Person>(); // Colocar o tipo de objeto correto no <>.
+    ArrayList <Object> members = new ArrayList<Object>(); // Colocar o tipo de objeto correto no <>.
     String funder;
     String researchLine;
     String title;
@@ -38,9 +38,8 @@ public class Project extends Production{
             System.out.println("Concluído");
         }
     }
-    public boolean addMember(Person novo){
-      return members.add(novo);
-     
+    public boolean addMember(Object novo){
+      return members.add(novo);   
    }
     void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
