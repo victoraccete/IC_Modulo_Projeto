@@ -20,7 +20,7 @@ public class Project extends Production{
     String funder;
     String researchLine;
 
-    Project projectEditionInfo(Project proj){
+   void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
         try {
             if(statusPos != 2){
@@ -32,7 +32,7 @@ public class Project extends Production{
                 String researchLine = scan.nextLine();
                 System.out.println("Digite a nova agência financiadora.");
                 String funder = scan.nextLine();
-                proj = proj.editProject(title, description, researchLine, funder);
+                editProject(title, description, researchLine, funder);
             } else {
                 System.out.println("Projetos concluídos só estão disponíveis para consulta.");
             }
@@ -41,16 +41,16 @@ public class Project extends Production{
         }
 
 
-        return proj;
+       
     }
 
-    private Project editProject(String title, String description, String researchLine, String funder){
+    private void editProject(String title, String description, String researchLine, String funder){
             this.title = title;
             this.description = description;
             this.researchLine = researchLine;
             this.funder = funder;
             
-            return this;
+            
     }
 
     @Override
