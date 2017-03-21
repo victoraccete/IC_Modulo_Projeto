@@ -1,20 +1,12 @@
 package com.company;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Scanner;
 
+    /* Editado por carlospinheirof 31/03/2017.
+    */
+
 public class Project extends Production{
-    // TODO: Calendar period;
     String description;
-
-    public enum Nature{
-        TIPO_1(1),TIPO_2(2),TIPO_3(3);
-
-        private Nature(int tipo){
-
-        }
-    }
-
 
     /*
      *O atributo statusStrings é um array que contém as strings que dizem respeito à situação
@@ -24,41 +16,84 @@ public class Project extends Production{
     String statusStrings[] = {"Em elaboração", "Em andamento", "Concluído"};
     private int statusPos = 0;
 
-    Nature nature; //Tipo de projeto
-    ArrayList members;
+    String type; //Tipo de projeto
+    ArrayList <Person> members = new ArrayList<Person>(); // Colocar o tipo de objeto correto no <>.
     String funder;
     String researchLine;
-
-   void projectEditionInfo(){
+    String title;
+    String dateBegin;
+    String dateEnd;
+    String aux;
+    public void infoProject(){
+        System.out.printf("Título do projeto: %s\n", this.title);
+        System.out.printf("Descrição:\n%s\n", this.description);
+        System.out.printf("Linha de pesquisa: %s\n", this.researchLine);
+        System.out.printf("Financiador: %s\n", this.funder);
+        System.out.printf("Tipo de projeto: %s\n", this.type);
+        if(this.statusPos == 0){
+            System.out.println("Em elaboração");
+        }else if(this.statusPos == 1){
+            System.out.println("Em andamento");
+        }else{
+            System.out.println("Concluído");
+        }
+    }
+    public boolean addMember(Person novo){
+       if(this.members.add(novo)){
+           return true;
+       }
+       else{
+           return false;
+       }
+   }
+    void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
         try {
             if(statusPos != 2){
                 System.out.println("Digite o novo título.");
-                String title = scan.nextLine();
+                String title_ = scan.nextLine();
+                System.out.println("Qual o tipo de projeto.");
+                String type_ = scan.nextLine();
                 System.out.println("Digite a nova descrição.");
-                String description = scan.nextLine();
+                String description_ = scan.nextLine();
                 System.out.println("Digite a nova linha de pesquisa.");
-                String researchLine = scan.nextLine();
+                String researchLine_ = scan.nextLine();
                 System.out.println("Digite a nova agência financiadora.");
-                String funder = scan.nextLine();
-                editProject(title, description, researchLine, funder);
+                String funder_ = scan.nextLine();
+                System.out.println("Situação atual do projeto.\n 0 - elaboração\n 1 - Em andamento\n 2 - Concluído\nAo marcar como concluído o projeto n poderá ser mais editado, apenas consultado");
+                int situation_ = scan.nextInt();
+                    aux = scan.nextLine();
+                while(situation_ < 0 || situation_ > 2){
+                    System.out.println("Por favor, apenas 0/1/2.");
+                    situation_ = scan.nextInt();
+                    aux = scan.nextLine();
+                }
+                System.out.println("Digite a data de inicio");
+                String dateBegin_ = scan.nextLine();
+                if(situation_ != 2){
+                     editProject(title_, description_, researchLine_, funder_, type_, dateBegin_, situation_, null);
+                }else{
+                    System.out.println("Digite a data de termino");
+                    String dateEnd_ = scan.nextLine();
+                    editProject(title_, description_, researchLine_, funder_, type_, dateBegin_, situation_, dateEnd_);
+                }
             } else {
                 System.out.println("Projetos concluídos só estão disponíveis para consulta.");
             }
         } catch (Exception e){
             System.out.println("Projeto não editado.");
         }
-
-
-       
     }
 
-    private void editProject(String title, String description, String researchLine, String funder){
+    private void editProject(String title, String description, String researchLine, String funder, String type, String dateBegin, int situation, String dateEnd){
             this.title = title;
             this.description = description;
             this.researchLine = researchLine;
             this.funder = funder;
-            
+            this.type = type;
+            this.statusPos = situation;
+            this.dateBegin = dateBegin;
+            this.dateEnd = dateEnd;
             
     }
 
