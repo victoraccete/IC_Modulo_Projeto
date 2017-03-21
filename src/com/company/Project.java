@@ -39,12 +39,8 @@ public class Project extends Production{
         }
     }
     public boolean addMember(Person novo){
-       if(this.members.add(novo)){
-           return true;
-       }
-       else{
-           return false;
-       }
+      return members.add(novo);
+     
    }
     void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
