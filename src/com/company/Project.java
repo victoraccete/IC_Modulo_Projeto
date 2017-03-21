@@ -7,6 +7,15 @@ public class Project extends Production{
     // TODO: Calendar period;
     String description;
 
+    public enum Nature{
+        TIPO_1(1),TIPO_2(2),TIPO_3(3);
+
+        private Nature(int tipo){
+
+        }
+    }
+
+
     /*
      *O atributo statusStrings é um array que contém as strings que dizem respeito à situação
      * atual do projeto. O atributo statusPos vai guardar a posição desse array, para saber o status atual.
@@ -15,7 +24,7 @@ public class Project extends Production{
     String statusStrings[] = {"Em elaboração", "Em andamento", "Concluído"};
     private int statusPos = 0;
 
-    String natureza; //Tipo de projeto
+    Nature nature; //Tipo de projeto
     ArrayList members;
     String funder;
     String researchLine;
