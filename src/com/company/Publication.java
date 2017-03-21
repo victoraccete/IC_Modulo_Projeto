@@ -9,38 +9,38 @@ import java.util.List;
 public class Publication extends Production{
 
     @Override
-    Production createNew() {
+    Production criarNova() {
         return null;
     }
 
-    private String  title;
+    //private String  title; Não precisa pois já tem na classe mãe
     private String abstract_;
     private String revista;
-    private List<String> keyWords;
+    private List<String> palavrasChave;
     private List<Object> autores;// TODO: 20/03/2017 Modificar tipo de Object para o tipo correto
     private String financiador;
-    private Date submissionDate;
-    private Date publicationDate;
+    private Date dataDeSubmissao;
+    private Date dataDePublicacao;
 
-    public Date getSubmissionDate() {
-        return submissionDate;
+    public Date getDataDeSubmissao() {
+        return dataDeSubmissao;
     }
 
-    public Date getPublicationDate() {
-        return publicationDate;
+    public Date getDataDePublicacao() {
+        return dataDePublicacao;
     }
 
     public String getRevista() {
         return revista;
     }
 
-    public List<String> getKeyWords() {
-        return keyWords;
+    public List<String> getPalavrasChave() {
+        return palavrasChave;
     }
 
 
-    public String getTitle() {
-        return title;
+    public String getTitulo() {
+        return titulo;
     }
 
     public String getAbstract_() {

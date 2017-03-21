@@ -2,9 +2,9 @@ package com.company;
 
 
 public abstract class Production {
-    String title;
+    String titulo;
 
-    abstract Production createNew();
+    abstract Production criarNova();
 
 
 }

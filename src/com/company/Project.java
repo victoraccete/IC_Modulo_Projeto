@@ -14,24 +14,24 @@ public class Project extends Production{
      */
     String statusStrings[] = {"Em elaboração", "Em andamento", "Concluído"};
     private int statusPos = 0;
-    String description;
-    String type; //Tipo de projeto
-    ArrayList <Object> members = new ArrayList<Object>(); // Colocar o tipo de objeto correto no <>.
-    ArrayList <Publication> publications = new ArrayList<Publication>();
-    String funder;
-    String researchLine;
-    String title;
-    String dateBegin;
-    String dateEnd;
-    String aux;
-    boolean v;
+    String descricao;
+    String tipo; //Tipo de projeto
+    ArrayList <Object> integrantes = new ArrayList<Object>(); // Colocar o tipo de objeto correto no <>.
+    ArrayList <Publication> publicacoes = new ArrayList<Publication>();
+    String financiador;
+    String linhaDePesquisa;
+    //String titulo; Não precisa, pois já tem na classe mãe
+    String dataDeInicio;
+    String datadeTermino;
+    private String aux;
+    private boolean v;
     Publication pubaux;
-    public void infoProject(){
-        System.out.printf("Título do projeto: %s\n", this.title);
-        System.out.printf("Descrição:\n%s\n", this.description);
-        System.out.printf("Linha de pesquisa: %s\n", this.researchLine);
-        System.out.printf("Financiador: %s\n", this.funder);
-        System.out.printf("Tipo de projeto: %s\n", this.type);
+    public void informacoesDoProjeto(){
+        System.out.printf("Título do projeto: %s\n", this.titulo);
+        System.out.printf("Descrição:\n%s\n", this.descricao);
+        System.out.printf("Linha de pesquisa: %s\n", this.linhaDePesquisa);
+        System.out.printf("Financiador: %s\n", this.financiador);
+        System.out.printf("Tipo de projeto: %s\n", this.tipo);
         if(this.statusPos == 0){
             System.out.println("Em elaboração");
         }else if(this.statusPos == 1){
@@ -39,10 +39,10 @@ public class Project extends Production{
         }else{
             System.out.println("Concluído");
         }
-        publicationList();
+        listaDePublicacoes();
     }
-    public boolean addMember(Object novo){
-      return members.add(novo);   
+    public boolean adicionarIntegrante(Object novo){
+      return integrantes.add(novo);
    }
     void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
@@ -51,15 +51,15 @@ public class Project extends Production{
             try {
                 if(statusPos != 2){
                     System.out.println("Digite o novo título.");
-                    String title_ = scan.nextLine();
+                    String titulo_ = scan.nextLine();
                     System.out.println("Qual o tipo de projeto.");
-                    String type_ = scan.nextLine();
+                    String tipo_ = scan.nextLine();
                     System.out.println("Digite a nova descrição.");
-                    String description_ = scan.nextLine();
+                    String descricao_ = scan.nextLine();
                     System.out.println("Digite a nova linha de pesquisa.");
-                    String researchLine_ = scan.nextLine();
+                    String linhaDePesquisa_ = scan.nextLine();
                     System.out.println("Digite a nova agência financiadora.");
-                    String funder_ = scan.nextLine();
+                    String financiador_ = scan.nextLine();
                     System.out.println("Situação atual do projeto.\n 0 - elaboração\n 1 - Em andamento\n 2 - Concluído\nAo marcar como concluído o projeto n poderá ser mais editado, apenas consultado");
                     int situation_ = scan.nextInt();
                         aux = scan.nextLine();
@@ -69,13 +69,13 @@ public class Project extends Production{
                         aux = scan.nextLine();
                     }
                     System.out.println("Digite a data de inicio");
-                    String dateBegin_ = scan.nextLine();
+                    String dataDeInicio_ = scan.nextLine();
                     if(situation_ != 2){
-                         editProject(title_, description_, researchLine_, funder_, type_, dateBegin_, situation_, null);
+                         editarProjeto(titulo_, descricao_, linhaDePesquisa_, financiador_, tipo_, dataDeInicio_, situation_, null);
                     }else{
                         System.out.println("Digite a data de termino");
-                        String dateEnd_ = scan.nextLine();
-                        editProject(title_, description_, researchLine_, funder_, type_, dateBegin_, situation_, dateEnd_);
+                        String datadeTermino_ = scan.nextLine();
+                        editarProjeto(titulo_, descricao_, linhaDePesquisa_, financiador_, tipo_, dataDeInicio_, situation_, datadeTermino_);
                     }
                 } else {
                     System.out.println("Projetos concluídos só estão disponíveis para consulta.");
@@ -87,27 +87,27 @@ public class Project extends Production{
         }   
     }
 
-    private void editProject(String title, String description, String researchLine, String funder, String type, String dateBegin, int situation, String dateEnd){
-            this.title = title;
-            this.description = description;
-            this.researchLine = researchLine;
-            this.funder = funder;
-            this.type = type;
+    private void editarProjeto(String titulo, String descricao, String linhaDePesquisa, String financiador, String tipo, String dataDeInicio, int situation, String datadeTermino){
+            this.titulo = titulo;
+            this.descricao = descricao;
+            this.linhaDePesquisa = linhaDePesquisa;
+            this.financiador = financiador;
+            this.tipo = tipo;
             this.statusPos = situation;
-            this.dateBegin = dateBegin;
-            this.dateEnd = dateEnd;
+            this.dataDeInicio = dataDeInicio;
+            this.datadeTermino = datadeTermino;
             
     }
-     public boolean addPublication(Publication nova){
-        return publications.add(nova);
+     public boolean adicionarPublicacao(Publication nova){
+        return publicacoes.add(nova);
     }
-    private void publicationList(){
-        if(!(this.publications.isEmpty())){
-            for(int i = 0; i < this.publications.size(); i++){
-                pubaux = this.publications.get(i); getRevista()
-                System.out.printf("Titulo: %s\n", pubaux.getTitle());
-                System.out.printf("Data de submissão: %s\n", pubaux.getSubmissionDate()); // saber como imprimir o tipo Date.
-                System.out.printf("Data de publicação: %s\n", pubaux.getPublicationDate());// Saber como imprimir o tipo Date.
+    private void listaDePublicacoes(){
+        if(!(this.publicacoes.isEmpty())){
+            for(int i = 0; i < this.publicacoes.size(); i++){
+                pubaux = this.publicacoes.get(i);
+                System.out.printf("Titulo: %s\n", pubaux.getTitulo());
+                System.out.printf("Data de submissão: %s\n", pubaux.getDataDeSubmissao()); // saber como imprimir o tipo Date.
+                System.out.printf("Data de publicação: %s\n", pubaux.getDataDePublicacao());// Saber como imprimir o tipo Date.
                 System.out.printf("Revista ao qual foi publicada: %s\n", pubaux.getRevista());
             }
         }
@@ -116,7 +116,7 @@ public class Project extends Production{
         }
     }
     @Override
-    Production createNew() {
+    Production criarNova() {
         return null;
     }
 }
