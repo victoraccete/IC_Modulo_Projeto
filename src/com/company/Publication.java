@@ -22,6 +22,31 @@ public class Publication extends Production{
     private Date dataDeSubmissao;
     private Date dataDePublicacao;
 
+    public void informacoesDaPublicacao() {
+        System.out.println("Título: " + this.titulo);
+        System.out.println("Abstract: " + this.abstract_);
+        System.out.print("Palavras-chave: ");
+        for(String palavra : this.palavrasChave) {
+            System.out.print(palavra + " ");
+        }
+        System.out.println();
+
+        System.out.print("Autores: ");
+        for(Object autor : this.autores) { //TODO: 21/03/2017 Modificar tipo de Object para o tipo correto
+            //TODO: 21/03/2017 Colocar para imprimir autor.nome
+        }
+        System.out.println();
+
+        System.out.println("Revista: " + this.revista);
+
+        //TODO: 21/03/2017 Colocar pra imprimir as datas corretamente
+        System.out.println("Data de submissão: " + this.dataDeSubmissao);
+        System.out.println("Data de publicação: " + this.dataDePublicacao);
+
+        System.out.println("Financiador: " + this.financiador);
+
+    }
+
     public Date getDataDeSubmissao() {
         return dataDeSubmissao;
     }
@@ -46,6 +71,5 @@ public class Publication extends Production{
     public String getAbstract_() {
         return abstract_;
     }
-
 
 }
