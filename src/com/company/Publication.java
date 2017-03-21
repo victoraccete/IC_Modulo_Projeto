@@ -15,12 +15,12 @@ public class Publication extends Production{
 
     private String  title;
     private String abstract_;
-    String revista;
-    List<String> keyWords;
-    List<Object> autores;// TODO: 20/03/2017 Modificar tipo de Object para o tipo correto
-    String financiador;
-    Date submissionDate;
-    Date publicationDate;
+    private String revista;
+    private List<String> keyWords;
+    private List<Object> autores;// TODO: 20/03/2017 Modificar tipo de Object para o tipo correto
+    private String financiador;
+    private Date submissionDate;
+    private Date publicationDate;
 
     public Date getSubmissionDate() {
         return submissionDate;
