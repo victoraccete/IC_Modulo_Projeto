@@ -1,5 +1,7 @@
 package com.company;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -39,9 +41,10 @@ public class Publication extends Production{
 
         System.out.println("Revista: " + this.revista);
 
-        //TODO: 21/03/2017 Colocar pra imprimir as datas corretamente
-        System.out.println("Data de submissão: " + this.dataDeSubmissao);
-        System.out.println("Data de publicação: " + this.dataDePublicacao);
+
+        DateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Data de submissão: " + dateFormat.format(this.dataDeSubmissao));
+        System.out.println("Data de publicação: " +dateFormat.format( this.dataDePublicacao));
 
         System.out.println("Financiador: " + this.financiador);
 
