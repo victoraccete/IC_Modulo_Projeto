@@ -118,14 +118,13 @@ public class Project extends Production<Project>{
         return publicacoes.add(nova);
     }
     private void listaDePublicacoes(){
-        if(!(this.publicacoes.isEmpty())){
-            for(int i = 0; i < this.publicacoes.size(); i++){
+        if(!(this.publicacoes.isEmpty())) {
+            for (int i = 0; i < this.publicacoes.size(); i++) {
                 pubaux = this.publicacoes.get(i);
                 pubaux.informacoesDaPublicacao();
-        }
-        else{
+            }
+        } else{
             System.out.println("Esse projeto não possui publicações");
         }
     }
-
 }
