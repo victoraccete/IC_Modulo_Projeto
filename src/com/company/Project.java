@@ -22,15 +22,13 @@ public class Project extends Production<Project>{
     String linhaDePesquisa;
     Scanner ler = new Scanner(System.in);
     String stringaux;
-    //String titulo; Não precisa, pois já tem na classe mãe
     String dataDeInicio;
     String datadeTermino;
-    private String aux;
     private boolean v;
     Publication pubaux;
     public void informacoesDoProjeto(){
         System.out.printf("Título do projeto: %s\n", this.titulo);
-        System.out.printf("Descrição:\n%s\n", this.descricao);
+        System.out.printf("Descrição:%s\n", this.descricao);
         System.out.printf("Linha de pesquisa: %s\n", this.linhaDePesquisa);
         System.out.printf("Financiador: %s\n", this.financiador);
         System.out.printf("Tipo de projeto: %s\n", this.tipo);
@@ -51,7 +49,7 @@ public class Project extends Production<Project>{
 
     @Override
     Project criarNova() {
-        return null;
+        return this;
     }
 
     void projectEditionInfo(){
@@ -72,12 +70,11 @@ public class Project extends Production<Project>{
                     String financiador_ = scan.nextLine();
                     System.out.println("Situação atual do projeto.\n 0 - elaboração\n 1 - Em andamento\n 2 - Concluído\nAo marcar como concluído o projeto n poderá ser mais editado, apenas consultado");
                     int situacao = scan.nextInt();
-                        aux = scan.nextLine();
                     while(situacao < 0 || situacao > 2){
                         System.out.println("Por favor, apenas 0/1/2.");
                         situacao = scan.nextInt();
-                        aux = scan.nextLine();
                     }
+                    scan.nextLine();
                     System.out.println("Digite a data de inicio");
                     String dataDeInicio_ = scan.nextLine();
                     if(situacao != 2){

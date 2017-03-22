@@ -12,7 +12,7 @@ public class Publication extends Production<Publication>{
 
     @Override
     Publication criarNova() {
-        return null;
+        return this;
     }
 
     //private String  title; Não precisa pois já tem na classe mãe
