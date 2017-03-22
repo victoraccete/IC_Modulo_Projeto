@@ -66,7 +66,6 @@ public class Publication extends Production<Publication>{
         return palavrasChave;
     }
 
-
     public String getTitulo() {
         return titulo;
     }
