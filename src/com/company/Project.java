@@ -94,7 +94,15 @@ public class Project extends Production<Project>{
             }
         }   
     }
-
+    public String getTitulo(){
+        return this.titulo;
+    }
+    public String getLinha(){
+        return this.linhaDePesquisa;
+    }
+    public int getSituacao(){
+        return this.statusPos;
+    }
     private void editarProjeto(String titulo, String descricao, String linhaDePesquisa, String financiador, String tipo, String dataDeInicio, int situation, String datadeTermino){
             this.titulo = titulo;
             this.descricao = descricao;
