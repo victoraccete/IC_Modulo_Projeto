@@ -166,12 +166,10 @@
                             }
                         }
                         break;
-                   /* case: 3 //Editando projeto já existente.
+                    case 3: //Editando projeto já existente.
                         proaux = buscarProjetoNome(projetos);
-                        if(proaux != null){
-                        proaux.projectEditionInfo();
-                    }
-                    break;*/
+                        if(proaux != null) proaux.projectEditionInfo();
+                    break;
                 }
             }
         }

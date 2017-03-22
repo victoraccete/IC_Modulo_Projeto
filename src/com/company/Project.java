@@ -69,21 +69,21 @@ public class Project extends Production<Project>{
                     System.out.println("Digite a nova agência financiadora.");
                     String financiador_ = scan.nextLine();
                     System.out.println("Situação atual do projeto.\n 0 - elaboração\n 1 - Em andamento\n 2 - Concluído\nAo marcar como concluído o projeto n poderá ser mais editado, apenas consultado");
-                    int situation_ = scan.nextInt();
+                    int situacao = scan.nextInt();
                         aux = scan.nextLine();
-                    while(situation_ < 0 || situation_ > 2){
+                    while(situacao < 0 || situacao > 2){
                         System.out.println("Por favor, apenas 0/1/2.");
-                        situation_ = scan.nextInt();
+                        situacao = scan.nextInt();
                         aux = scan.nextLine();
                     }
                     System.out.println("Digite a data de inicio");
                     String dataDeInicio_ = scan.nextLine();
-                    if(situation_ != 2){
-                         editarProjeto(titulo_, descricao_, linhaDePesquisa_, financiador_, tipo_, dataDeInicio_, situation_, null);
+                    if(situacao != 2){
+                         editarProjeto(titulo_, descricao_, linhaDePesquisa_, financiador_, tipo_, dataDeInicio_, situacao, null);
                     }else{
                         System.out.println("Digite a data de termino");
                         String datadeTermino_ = scan.nextLine();
-                        editarProjeto(titulo_, descricao_, linhaDePesquisa_, financiador_, tipo_, dataDeInicio_, situation_, datadeTermino_);
+                        editarProjeto(titulo_, descricao_, linhaDePesquisa_, financiador_, tipo_, dataDeInicio_, situacao, datadeTermino_);
                     }
                 } else {
                     System.out.println("Projetos concluídos só estão disponíveis para consulta.");
@@ -92,7 +92,7 @@ public class Project extends Production<Project>{
             } catch (Exception e){
                 System.out.println("Projeto não editado.");
             }
-        }   
+        }
     }
     public String getTitulo(){
         return this.titulo;
