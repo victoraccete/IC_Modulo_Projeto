@@ -113,11 +113,7 @@ public class Project extends Production<Project>{
         if(!(this.publicacoes.isEmpty())){
             for(int i = 0; i < this.publicacoes.size(); i++){
                 pubaux = this.publicacoes.get(i);
-                System.out.printf("Titulo: %s\n", pubaux.getTitulo());
-                System.out.printf("Data de submissão: %s\n", pubaux.getDataDeSubmissao()); // saber como imprimir o tipo Date.
-                System.out.printf("Data de publicação: %s\n", pubaux.getDataDePublicacao());// Saber como imprimir o tipo Date.
-                System.out.printf("Revista ao qual foi publicada: %s\n", pubaux.getRevista());
-            }
+                pubaux.informacoesDaPublicacao();
         }
         else{
             System.out.println("Esse projeto não possui publicações");
