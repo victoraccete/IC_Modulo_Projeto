@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * Created by Jose_Augusto on 20/03/2017.
  */
-public class Publication extends Production{
+public class Publication extends Production<Publication>{
 
     @Override
-    Production criarNova() {
+    Publication criarNova() {
         return null;
     }
 

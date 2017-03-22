@@ -5,7 +5,7 @@ import java.util.Scanner;
     /* Editado por carlospinheirof 31/03/2017.
     */
 
-public class Project extends Production{
+public class Project extends Production<Project>{
     
     /*
      *O atributo statusStrings é um array que contém as strings que dizem respeito à situação
@@ -41,9 +41,17 @@ public class Project extends Production{
         }
         listaDePublicacoes();
     }
+
     public boolean adicionarIntegrante(Object novo){
       return integrantes.add(novo);
    }
+
+
+    @Override
+    Project criarNova() {
+        return null;
+    }
+
     void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
         v = false;
@@ -115,8 +123,5 @@ public class Project extends Production{
             System.out.println("Esse projeto não possui publicações");
         }
     }
-    @Override
-    Production criarNova() {
-        return null;
-    }
+
 }
