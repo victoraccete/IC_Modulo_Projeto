@@ -1,10 +1,8 @@
 package com.company;
 
 
-public abstract class Production {
+public abstract class Production<T> {
     String titulo;
 
-    abstract Production criarNova();
-
-
+    abstract T criarNova();
 }

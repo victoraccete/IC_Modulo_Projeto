@@ -5,7 +5,7 @@ import java.util.Scanner;
     /* Editado por carlospinheirof 31/03/2017.
     */
 
-public class Project extends Production{
+public class Project extends Production<Project>{
     
     /*
      *O atributo statusStrings é um array que contém as strings que dizem respeito à situação
@@ -41,9 +41,17 @@ public class Project extends Production{
         }
         listaDePublicacoes();
     }
+
     public boolean adicionarIntegrante(Object novo){
       return integrantes.add(novo);
    }
+
+
+    @Override
+    Project criarNova() {
+        return null;
+    }
+
     void projectEditionInfo(){
         Scanner scan = new Scanner(System.in);
         v = false;
@@ -86,7 +94,15 @@ public class Project extends Production{
             }
         }   
     }
-
+    public String getTitulo(){
+        return this.titulo;
+    }
+    public String getLinha(){
+        return this.linhaDePesquisa;
+    }
+    public int getSituacao(){
+        return this.statusPos;
+    }
     private void editarProjeto(String titulo, String descricao, String linhaDePesquisa, String financiador, String tipo, String dataDeInicio, int situation, String datadeTermino){
             this.titulo = titulo;
             this.descricao = descricao;
@@ -102,21 +118,13 @@ public class Project extends Production{
         return publicacoes.add(nova);
     }
     private void listaDePublicacoes(){
-        if(!(this.publicacoes.isEmpty())){
-            for(int i = 0; i < this.publicacoes.size(); i++){
+        if(!(this.publicacoes.isEmpty())) {
+            for (int i = 0; i < this.publicacoes.size(); i++) {
                 pubaux = this.publicacoes.get(i);
-                System.out.printf("Titulo: %s\n", pubaux.getTitulo());
-                System.out.printf("Data de submissão: %s\n", pubaux.getDataDeSubmissao()); // saber como imprimir o tipo Date.
-                System.out.printf("Data de publicação: %s\n", pubaux.getDataDePublicacao());// Saber como imprimir o tipo Date.
-                System.out.printf("Revista ao qual foi publicada: %s\n", pubaux.getRevista());
+                pubaux.informacoesDaPublicacao();
             }
-        }
-        else{
+        } else{
             System.out.println("Esse projeto não possui publicações");
         }
-    }
-    @Override
-    Production criarNova() {
-        return null;
     }
 }
