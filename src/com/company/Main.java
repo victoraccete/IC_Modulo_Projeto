@@ -2,30 +2,7 @@
     import java.util.ArrayList;
     import java.util.Scanner;
     public class Main {
-    
-    public static Project buscarProjetoNome(ArrayList <Project> projetos){
-        Scanner ler = new Scanner(System.in);
-        System.out.println("Digite o titulo do projeto");
-        String stringaux = ler.nextLine();
-        int j = 0;
-        Project proaux = new Project();
-        for (int i = 0; i < projetos.size(); i++) {
-            proaux = projetos.get(i);
-            if (stringaux.equals(proaux.getTitulo())) {
-                i = projetos.size();
-                j = 1;
-            }
-        }
-        if (j == 0) {
-            System.out.println("Esse projeto não foi encontrando.");
-            return null;
-        }else{
-            return proaux;
-        }
-    }
-        
-        
-        
+
         public static void main(String[] args) {
             Project proj = new Project();
             Project temp = proj.criarNova();
@@ -51,6 +28,7 @@
                         }
                     } catch (Exception e) {
                         System.out.println("Entrada inválida, digite novamente.");
+                        stringaux = ler.nextLine();
                     }
                 }
                 switch (comando) {
@@ -67,6 +45,7 @@
                                 v = true;
                             } catch (Exception e) {
                                 System.out.println("Entrada inválida, tente novamente.");
+                                stringaux = ler.nextLine();
                             }
                         }
                         break;
@@ -83,7 +62,7 @@
                                 } else {
                                     switch (comando2) {
                                         case 1:
-                                            proaux = buscarProjetoNome(projetos);
+                                            proaux = Project.buscarProjetoNome(projetos);
                                             if(proaux != null){
                                                 proaux.informacoesDoProjeto();
                                             } 
@@ -163,11 +142,12 @@
                                 }
                             } catch (Exception e) {
                                 System.out.println("Entrada inválida");
+                                stringaux = ler.nextLine();
                             }
                         }
                         break;
                     case 3: //Editando projeto já existente.
-                        proaux = buscarProjetoNome(projetos);
+                        proaux = Project.buscarProjetoNome(projetos);
                         if(proaux != null) proaux.projectEditionInfo();
                     break;
                 }

@@ -16,10 +16,12 @@ public class Project extends Production<Project>{
     private int statusPos = 0;
     String descricao;
     String tipo; //Tipo de projeto
-    ArrayList <Object> integrantes = new ArrayList<Object>(); // Colocar o tipo de objeto correto no <>.
+    ArrayList <Object> integrantes = new ArrayList<Object>(); //TODO: Colocar o tipo de objeto correto no <>.
     ArrayList <Publication> publicacoes = new ArrayList<Publication>();
     String financiador;
     String linhaDePesquisa;
+    Scanner ler = new Scanner(System.in);
+    String stringaux;
     //String titulo; Não precisa, pois já tem na classe mãe
     String dataDeInicio;
     String datadeTermino;
@@ -91,6 +93,7 @@ public class Project extends Production<Project>{
                 v = true;
             } catch (Exception e){
                 System.out.println("Projeto não editado.");
+                stringaux = ler.nextLine();
             }
         }
     }
@@ -125,6 +128,27 @@ public class Project extends Production<Project>{
             }
         } else{
             System.out.println("Esse projeto não possui publicações");
+        }
+    }
+
+    public static Project buscarProjetoNome(ArrayList <Project> projetos){
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Digite o titulo do projeto");
+        String stringaux = ler.nextLine();
+        int j = 0;
+        Project proaux = new Project();
+        for (int i = 0; i < projetos.size(); i++) {
+            proaux = projetos.get(i);
+            if (stringaux.equals(proaux.getTitulo())) {
+                i = projetos.size();
+                j = 1;
+            }
+        }
+        if (j == 0) {
+            System.out.println("Esse projeto não foi encontrando.");
+            return null;
+        }else{
+            return proaux;
         }
     }
 }
