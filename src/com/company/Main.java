@@ -15,7 +15,7 @@
             ArrayList<Project> projetos = new ArrayList<Project>();
             Project proaux = new Project();
             while (comando != 0) {
-                System.out.println("Escolha a opção desejada\n1 - Editar projeto existente, 2 - Informação de um projeto, 0 - para sair desse menu");
+                System.out.println("Escolha a opção desejada\n1 - Adicionar um projeto, 2 - Informação de um projeto, 0 - para sair desse menu");
                 v = false;
                 while (!v) {
                     try {
@@ -31,10 +31,15 @@
                     }
                 }
                 switch (comando) {
-                    case 1:     //editar projeto.
+                    case 1:     //adicionar projeto.
                         v = false;
                         while (!v) {
                             try {
+                                System.out.println("Você selecionou adicionar um projeto.");
+                                    Project proaux = new Project();
+                                    proaux.projectEditionInfo();
+                                    projetos.add(proaux);
+                                 System.out.println("Adicionado com sucesso.");
                                 // colocar o código.
                                 v = true;
                             } catch (Exception e) {
@@ -42,7 +47,7 @@
                             }
                         }
                         break;
-                    case 2:
+                    case 2:     //procura e informação sobre projeto.
                         v = false;
                         while (!v) {
                             try {
