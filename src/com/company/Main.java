@@ -3,11 +3,12 @@
     import java.util.Scanner;
     public class Main {
     
-    Public Static Project buscarProjetoNome(ArrayList <Project> projetos){
+    public static Project buscarProjetoNome(ArrayList <Project> projetos){
+        Scanner ler = new Scanner(System.in);
         System.out.println("Digite o titulo do projeto");
         String stringaux = ler.nextLine();
         int j = 0;
-        Project proaux = new Project();		
+        Project proaux = new Project();
         for (int i = 0; i < projetos.size(); i++) {
             proaux = projetos.get(i);
             if (stringaux.equals(proaux.getTitulo())) {
@@ -20,8 +21,8 @@
             return null;
         }else{
             return proaux;
-        }		
-    }    
+        }
+    }
         
         
         
@@ -58,7 +59,7 @@
                         while (!v) {
                             try {
                                 System.out.println("Você selecionou adicionar um projeto.");
-                                    Project proaux = new Project();
+                                    proaux = new Project();
                                     proaux.projectEditionInfo();
                                     projetos.add(proaux);
                                  System.out.println("Adicionado com sucesso.");
@@ -164,13 +165,13 @@
                                 System.out.println("Entrada inválida");
                             }
                         }
-                  break;
-                    case : 3 //Editando projeto já existente.
+                        break;
+                   /* case: 3 //Editando projeto já existente.
                         proaux = buscarProjetoNome(projetos);
-                         if(proaux != null){
-                           proaux.projectEditionInfo();
-                         } 
-                    break;
+                        if(proaux != null){
+                        proaux.projectEditionInfo();
+                    }
+                    break;*/
                 }
             }
         }
