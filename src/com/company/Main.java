@@ -2,7 +2,29 @@
     import java.util.ArrayList;
     import java.util.Scanner;
     public class Main {
-
+    
+    Public Static Project buscarProjetoNome(ArrayList <Project> projetos){
+        System.out.println("Digite o titulo do projeto");
+        String stringaux = ler.nextLine();
+        int j = 0;
+        Project proaux = new Project();		
+        for (int i = 0; i < projetos.size(); i++) {
+            proaux = projetos.get(i);
+            if (stringaux.equals(proaux.getTitulo())) {
+                i = projetos.size();
+                j = 1;
+            }
+        }
+        if (j == 0) {
+            System.out.println("Esse projeto não foi encontrando.");
+            return null;
+        }else{
+            return proaux;
+        }		
+    }    
+        
+        
+        
         public static void main(String[] args) {
             Project proj = new Project();
             Project temp = proj.criarNova();
@@ -15,13 +37,13 @@
             ArrayList<Project> projetos = new ArrayList<Project>();
             Project proaux = new Project();
             while (comando != 0) {
-                System.out.println("Escolha a opção desejada\n1 - Adicionar um projeto, 2 - Informação de um projeto, 0 - para sair desse menu");
+                System.out.println("Escolha a opção desejada\n1 - Adicionar um projeto, 2 - Informação de um projeto, 3 - Editar projeto, 0 - para sair desse menu");
                 v = false;
                 while (!v) {
                     try {
                         comando = ler.nextInt();
                         stringaux = ler.nextLine();
-                        if (comando < 0 || comando > 2) { //aumentar o 2 de acordo com a quantidade de opções que forem colocando.
+                        if (comando < 0 || comando > 3) { //aumentar o 2 de acordo com a quantidade de opções que forem colocando.
                             System.out.println("Entrada inválida, digite novamente.");
                         } else {
                             v = true;
@@ -60,21 +82,10 @@
                                 } else {
                                     switch (comando2) {
                                         case 1:
-                                            System.out.println("Digite o titulo do projeto");
-                                            stringaux = ler.nextLine();
-                                            j = 0;
-                                            for (i = 0; i < projetos.size(); i++) {
-                                                proaux = projetos.get(i);
-                                                if (stringaux.equals(proaux.getTitulo())) {        // lembrar de criar esse método na classe project.
-                                                    i = projetos.size();
-                                                    j = 1;
-                                                }
-                                            }
-                                            if (j == 0) {
-                                                System.out.println("Esse projeto não foi encontrando.");
-                                                break;
-                                            }
-                                            proaux.informacoesDoProjeto();
+                                            proaux = buscarProjetoNome(projetos);
+                                            if(proaux != null){
+                                                proaux.informacoesDoProjeto();
+                                            } 
                                             break;
                                         case 2:         ///problema de código repetido, não lembro como resolve.
                                             System.out.println("Digite a linha de pesquisa");
@@ -153,6 +164,13 @@
                                 System.out.println("Entrada inválida");
                             }
                         }
+                  break;
+                    case : 3 //Editando projeto já existente.
+                        proaux = buscarProjetoNome(projetos);
+                         if(proaux != null){
+                           proaux.projectEditionInfo();
+                         } 
+                    break;
                 }
             }
         }
